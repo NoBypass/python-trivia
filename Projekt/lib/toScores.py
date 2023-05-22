@@ -1,15 +1,16 @@
 import json
 
-def toScores(data, mode):
-    scoresJSON = open('./scores.json')
 
-    JSONobject = json.load(scoresJSON)
+def to_scores(data, mode):
+    scores_json = open('./scores.json')
+
+    json_object = json.load(scores_json)
 
     if mode == '&type=boolean':
-        JSONobject['stats']['trueFalse'].append(data)
+        json_object['stats']['trueFalse'].append(data)
     else:
-        JSONobject['stats']['multipleChoice'].append(data)
+        json_object['stats']['multipleChoice'].append(data)
 
-    scoresJSON.close()
+    scores_json.close()
     with open('scores.json', 'w') as f:
-        json.dump(JSONobject, f)
+        json.dump(json_object, f)

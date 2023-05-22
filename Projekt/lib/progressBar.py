@@ -1,5 +1,5 @@
 import math
-from functions.colored import *
+from colored import *
 
 def progressBar(percentage, width):
     x = '█' * math.floor(width / 100 * percentage)

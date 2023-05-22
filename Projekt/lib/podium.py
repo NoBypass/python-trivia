@@ -1,5 +1,5 @@
 import json
-from functions.colored import *
+from colored import *
 
 def getIndex(li,target):
     for index, x in enumerate(li):

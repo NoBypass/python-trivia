@@ -1,4 +1,4 @@
-def format(string):
+def format_string(string):
     string = string.replace('&quot;', '"')
     string = string.replace('&amp;', '&')
     string = string.replace('&#039;', '\'')

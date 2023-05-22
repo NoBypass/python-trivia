@@ -1,11 +1,12 @@
-from functions.menuLn import *
+from menuLn import *
 
-def menu(width, myList):
-    for i in range(len(myList)):
-        if isinstance(myList[i], list):
-            arg = myList[i][0]
-            color = myList[i][1]
+
+def menu(width, my_list):
+    for i in range(len(my_list)):
+        if isinstance(my_list[i], list):
+            arg = my_list[i][0]
+            color = my_list[i][1]
         else:
-            arg = myList[i]
+            arg = my_list[i]
             color = 'blue'
-        menuLn(width, arg, color, i, len(myList))
+        menu_ln(width, arg, color, i, len(my_list))

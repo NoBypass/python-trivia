@@ -1,4 +1,4 @@
-def getColor(index):
+def get_color(index):
     if index < 33:
         color = 'red'
     elif index < 66:

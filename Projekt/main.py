@@ -95,32 +95,33 @@ mode = ''
 while game_iterations < limit:
     data = newQuestion(topic, difficulty, game_mode)
 
-    question = format(data['results'][0]['question'])
+    question = format_string(data['results'][0]['question'])
     answer = data['results'][0]['correct_answer']
 
     if game_mode == '&type=multiple':
 
-        # pAnswers = possible answers
-        pAnswers = [
+        possible_answers = [
             data['results'][0]['correct_answer'],
             data['results'][0]['incorrect_answers'][0],
             data['results'][0]['incorrect_answers'][1],
             data['results'][0]['incorrect_answers'][2],
         ]
 
-        shuffle(pAnswers)
-        options = 'a: ' + pAnswers[0] + ' b: ' + pAnswers[1] + ' c: ' + pAnswers[2] + ' d: ' + pAnswers[3]
-        aIndex = pAnswers.index(answer)
-        if aIndex == 0:
+        shuffle(possible_answers)
+        options = 'a: ' + possible_answers[0] + ' b: ' + possible_answers[1] + ' c: '\
+                  + possible_answers[2] + ' d: ' + possible_answers[3]
+
+        chosen_answer_index = possible_answers.index(answer)
+        if chosen_answer_index == 0:
             answer = 'a'
-        elif aIndex == 1:
+        elif chosen_answer_index == 1:
             answer = 'b'
-        elif aIndex == 2:
+        elif chosen_answer_index == 2:
             answer = 'c'
-        elif aIndex == 3:
+        elif chosen_answer_index == 3:
             answer = 'd'
 
-        questionStats = (multipleChoice(format(question), answer, format(options)))
+        questionStats = (multipleChoice(format_string(question), answer, format_string(options)))
         correct += questionStats[2]
         incorrect += questionStats[1]
         if incorrect == 0:
@@ -132,10 +133,10 @@ while game_iterations < limit:
     elif game_mode == '&type=boolean':
         data = newQuestion(topic, difficulty, game_mode)
 
-        question = format(data['results'][0]['question'])
+        question = format_string(data['results'][0]['question'])
         answer = data['results'][0]['correct_answer']
 
-        questionStats = (trueFalse(format(question), answer))
+        questionStats = (true_false(format_string(question), answer))
         correct += questionStats[2]
         incorrect += questionStats[1]
 
@@ -170,7 +171,7 @@ statObject = {
     "mode": game_mode,
 }
 
-toScores(statObject, game_mode)
+to_scores(statObject, game_mode)
 
 fTryText = ' '
 correctOnes = str(correct)
@@ -179,7 +180,7 @@ correctPercentage = 100 / (incorrect + correct) * correct
 if firstTry != 'N/A':
     correctOnes = str(correct + firstTry)
 if firstTry != 'N/A':
-    fTryText = colored('You got it first try ' + str(firstTry) + ' times.', getColor(firstTry))
+    fTryText = colored('You got it first try ' + str(firstTry) + ' times.', get_color(firstTry))
 
 podium(name, score, game_mode)
 
@@ -189,11 +190,11 @@ if incorrect != 1:
 
 menu(50, [
     'full',
-    [('Your score is: ' + str(newScore) + '/' + str(max_score)), getColor(100 / max_score * newScore)],
-    [progressBar(100 / int(max_score) * int(score), 20), getColor(100 / max_score * score)],
-    [('You made ' + str(incorrect) + ' mistake' + incorrectS), getColor(correctPercentage)],
+    [('Your score is: ' + str(newScore) + '/' + str(max_score)), get_color(100 / max_score * newScore)],
+    [progressBar(100 / int(max_score) * int(score), 20), get_color(100 / max_score * score)],
+    [('You made ' + str(incorrect) + ' mistake' + incorrectS), get_color(correctPercentage)],
     fTryText,
-    [('You answered correctly ' + correctOnes + ' times!'), getColor(correctPercentage)],
+    [('You answered correctly ' + correctOnes + ' times!'), get_color(correctPercentage)],
     'empty',
     'full',
     'Do you want to play again?',
