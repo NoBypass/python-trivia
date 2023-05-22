@@ -29,12 +29,14 @@ try:
     ]
 except ModuleNotFoundError:
     print(colored(
-        'Please make sure that every module is installed.\nRequired modules: \n - random\n - os\n - urllib\n - json\n - math\n   Disconnected to avoid redundancies in the JSON file.',
+        'Please make sure that every module is installed.\nRequired modules: \n - random\n - os\n - urllib\n - json\n '
+        '- math\n  Disconnected to avoid redundancies in the JSON file.',
         'red'))
     quit()
 
 print(colored(
-    'Please note that you always have to type out the given numbers, not the full words! You can also write "skip" as an answer if you dont know it.',
+    'Please note that you always have to type out the given numbers, not the full words! You can also write "skip" as '
+    'an answer if you dont know it.',
     'red'))
 
 # Welcome
@@ -63,18 +65,19 @@ topic = '&category=' + str(int(validate('Choose a topic', valids)) + 8)
 if topic == '&category=8':
     topic = ''
 
-if difficulty == '1':
-    difficulty = '&difficulty=easy'
-    limit = 15
-    multiplier = 0.5
-elif difficulty == '2':
-    difficulty = '&difficulty=medium'
-    limit = 30
-    multiplier = 1
-elif difficulty == '3':
-    difficulty = '&difficulty=hard'
-    limit = 45
-    multiplier = 1.5
+match difficulty:
+    case '1':
+        difficulty = '&difficulty=easy'
+        limit = 15
+        multiplier = 0.5
+    case '2':
+        difficulty = '&difficulty=medium'
+        limit = 30
+        multiplier = 1
+    case _:
+        difficulty = '&difficulty=hard'
+        limit = 45
+        multiplier = 1.5
 
 if game_mode == '1':
     game_mode = '&type=boolean'
@@ -83,13 +86,13 @@ else:
 
 # Example api link: https://opentdb.com/api.php?amount=1&category=22&difficulty=medium&type=multiple
 
-l = 0
+game_iterations = 0
 firstTry = 0
 incorrect = 0
 correct = 0
 mode = ''
 
-while l < limit:
+while game_iterations < limit:
     data = newQuestion(topic, difficulty, game_mode)
 
     question = format(data['results'][0]['question'])
@@ -141,13 +144,13 @@ while l < limit:
         if questionStats[3]:
             break
 
-    l += 1
+    game_iterations += 1
 
-maxscore = 0
+max_score = 0
 if firstTry != 'N/A':
-    maxscore = limit * 5 * multiplier
+    max_score = limit * 5 * multiplier
 else:
-    maxscore = limit * multiplier
+    max_score = limit * multiplier
 score = 0
 if firstTry != 'N/A':
     score = (firstTry * 5 - incorrect + correct) * multiplier
@@ -173,21 +176,24 @@ fTryText = ' '
 correctOnes = str(correct)
 correctPercentage = 100 / (incorrect + correct) * correct
 
-if firstTry != 'N/A': correctOnes = str(correct + firstTry)
-if firstTry != 'N/A': fTryText = colored('You got it first try ' + str(firstTry) + ' times.', getColor(firstTry))
+if firstTry != 'N/A':
+    correctOnes = str(correct + firstTry)
+if firstTry != 'N/A':
+    fTryText = colored('You got it first try ' + str(firstTry) + ' times.', getColor(firstTry))
 
 podium(name, score, game_mode)
 
 incorrectS = 's'
-if incorrect != 1: incorrectS = ''
+if incorrect != 1:
+    incorrectS = ''
 
 menu(50, [
     'full',
-    [('Your score is: ' + str(newScore) + '/' + str(maxscore)), getColor(100 / maxscore * newScore)],
-    [progressBar(100 / int(maxscore) * int(score), 20), getColor(100 / maxscore * score)],
+    [('Your score is: ' + str(newScore) + '/' + str(max_score)), getColor(100 / max_score * newScore)],
+    [progressBar(100 / int(max_score) * int(score), 20), getColor(100 / max_score * score)],
     [('You made ' + str(incorrect) + ' mistake' + incorrectS), getColor(correctPercentage)],
     fTryText,
-    [('You answered correcty ' + correctOnes + ' times!'), getColor(correctPercentage)],
+    [('You answered correctly ' + correctOnes + ' times!'), getColor(correctPercentage)],
     'empty',
     'full',
     'Do you want to play again?',
