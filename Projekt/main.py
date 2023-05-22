@@ -1,16 +1,16 @@
 import random
 
-from functions.menu import *
-from functions.newQuestion import *
-from functions.progressBar import *
-from functions.toScores import *
-from functions.validate import *
-from functions.getColor import *
-from functions.multipleChoice import *
-from functions.trueFalse import *
-from functions.podium import *
-from functions.colored import *
-from functions.format import *
+from lib.menu import *
+from lib.newQuestion import *
+from lib.progressBar import *
+from lib.toScores import *
+from lib.validate import *
+from lib.getColor import *
+from lib.multipleChoice import *
+from lib.trueFalse import *
+from lib.podium import *
+from lib.colored import *
+from lib.format import *
 
 from random import shuffle
 import os
