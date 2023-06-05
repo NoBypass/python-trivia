@@ -1,4 +1,4 @@
-from functions.colored import *
+from lib.colored import *
 
 
 def multipleChoice(question, correctAnswer, answers):

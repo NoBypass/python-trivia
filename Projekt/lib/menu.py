@@ -1,4 +1,4 @@
-from colored import *
+from lib.colored import *
 
 
 def menu_ln(width, args, color, pos, max):
