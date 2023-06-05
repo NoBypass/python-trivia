@@ -1,4 +1,4 @@
-from colored import *
+from lib.colored import *
 
 
 def validate(question, answerList):

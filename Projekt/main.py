@@ -33,6 +33,9 @@ except ModuleNotFoundError:
         '- math\n  Disconnected to avoid redundancies in the JSON file.',
         'red'))
     quit()
+except FileNotFoundError:
+    print(colored('Please make sure that the scores.json file is in the same directory as the main.py file.', 'red'))
+    quit()
 
 print(colored(
     'Please note that you always have to type out the given numbers, not the full words! You can also write "skip" as '

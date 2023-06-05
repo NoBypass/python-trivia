@@ -1,4 +1,4 @@
-from colored import *
+from lib.colored import *
 
 
 def true_false(question, correct_answer):
