@@ -108,7 +108,7 @@ while game_iterations < limit:
         ]
 
         shuffle(possible_answers)
-        options = 'a: ' + possible_answers[0] + ' b: ' + possible_answers[1] + ' c: '\
+        options = 'a: ' + possible_answers[0] + ' b: ' + possible_answers[1] + ' c: ' \
                   + possible_answers[2] + ' d: ' + possible_answers[3]
 
         chosen_answer_index = possible_answers.index(answer)
@@ -173,14 +173,14 @@ statObject = {
 
 to_scores(statObject, game_mode)
 
-fTryText = ' '
+first_try_text = ' '
 correctOnes = str(correct)
 correctPercentage = 100 / (incorrect + correct) * correct
 
 if firstTry != 'N/A':
     correctOnes = str(correct + firstTry)
 if firstTry != 'N/A':
-    fTryText = colored('You got it first try ' + str(firstTry) + ' times.', get_color(firstTry))
+    first_try_text = colored('You got it first try ' + str(firstTry) + ' times.', get_color(firstTry))
 
 podium(name, score, game_mode)
 
@@ -193,7 +193,7 @@ menu(50, [
     [('Your score is: ' + str(newScore) + '/' + str(max_score)), get_color(100 / max_score * newScore)],
     [progressBar(100 / int(max_score) * int(score), 20), get_color(100 / max_score * score)],
     [('You made ' + str(incorrect) + ' mistake' + incorrectS), get_color(correctPercentage)],
-    fTryText,
+    first_try_text,
     [('You answered correctly ' + correctOnes + ' times!'), get_color(correctPercentage)],
     'empty',
     'full',
