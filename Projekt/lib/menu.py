@@ -4,6 +4,7 @@ from lib.colored import *
 def menu_ln(width, args, color, pos, max):
     if len(args) > width - 6: return print(args)  # print('Error: at function "menu"')
     if args == 'empty': return
+    # full means that it should be a line
     if args == 'full':
         if pos == 0:
             corners = ['╔', '╗']

@@ -3,7 +3,7 @@ import sqlite3
 database_path = "database.db"
 
 
-def create():
+def create_if_not_exists():
     conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
 
@@ -17,6 +17,19 @@ def create():
                     )''')
     conn.commit()
     conn.close()
+
+
+'''
+function expects a dictionary like following:
+{
+    "user": string,
+    "correct": integer,
+    "incorrect": integer,
+    "firsttry": string,
+    "score": integer,
+    "multiplechoice": boolean
+}
+'''
 
 
 def write(data):
@@ -33,6 +46,19 @@ def write(data):
     cursor.executemany('INSERT INTO stats VALUES (?, ?, ?, ?, ?, ?)', [data_tuple])
     conn.commit()
     conn.close()
+
+
+'''
+function returns a list of dictionaries like following:
+[{
+    "user": string,
+    "correct": integer,
+    "incorrect": integer,
+    "firsttry": string,
+    "score": integer,
+    "multiplechoice": boolean
+}]
+'''
 
 
 def read():
