@@ -15,7 +15,7 @@ def podium(name, score, mode):
         if mode == '&type=boolean':
             return not data_object["multiplechoice"]
         else:
-            return not data_object["multiplechoice"]
+            return data_object["multiplechoice"]
 
     stats = list(filter(is_right_mode, db.read()))
 
