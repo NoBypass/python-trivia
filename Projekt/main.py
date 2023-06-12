@@ -194,9 +194,9 @@ while True:
 
     podium(name, score, game_mode)
 
-    incorrect_s = 's'
+    incorrect_s = ''
     if incorrect != 1:
-        incorrect_s = ''
+        incorrect_s = 's'
 
     try:
         menu(50, [

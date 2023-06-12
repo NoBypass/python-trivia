@@ -3,17 +3,14 @@
 The Purpose of this Project is to provide a way to kill some time whenever someone is sitting in from of their computer and does not know what to do. Most of the questions are general knowledge questions, which means that one can even learn from being bored.
 
 ## 1.2 Goals
-1. Specific Goal: Increase Correct Answers
-    - Objective: Improve the user's knowledge and accuracy in answering quiz questions.
-    - Example: Increase the number of correct answers by 10% compared to the previous game session.
+1. Offer multiple game modes
+    - The game should offer multiple choice and true false until 12 of jun 2023.
+2. Persisted scores
+    - Scores achieved by an user should be saved in a database until 12 of jun 2023.
 
-2. Measurable Goal: Track User Progress
-    - Objective: Monitor the user's progress and provide feedback on their performance.
-    - Example: Implement a scoring system to calculate and display the user's score based on the number of correct answers.
+3. Offer Different Difficulty Levels
+    - The game should offer 3 difficulty levels from easy to hard until 12 of jun 2023.
 
-3. Achievable Goal: Offer Different Difficulty Levels
-    - Objective: Provide a challenging yet achievable experience for users of varying knowledge levels.
-    - Example: Implement multiple difficulty levels (easy, medium, hard) that adapt the complexity of the questions based on the user's selection.
 
 ## 1.3 Requirements
 **Python Modules:**

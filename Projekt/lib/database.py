@@ -41,8 +41,6 @@ def write(data):
     conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
 
-    print(data)
-    print(data_tuple)
     cursor.executemany('INSERT INTO stats VALUES (?, ?, ?, ?, ?, ?)', [data_tuple])
     conn.commit()
     conn.close()
