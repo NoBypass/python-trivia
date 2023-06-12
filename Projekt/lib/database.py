@@ -7,7 +7,7 @@ def create():
     conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
 
-    cursor.execute('''CREATE TABLE IF NOT EXISTS score (
+    cursor.execute('''CREATE TABLE IF NOT EXISTS stats (
                         user TEXT,
                         correct INTEGER,
                         incorrect INTEGER,
@@ -15,8 +15,8 @@ def create():
                         score REAL,
                         mode INTEGER
                     )''')
-
     conn.commit()
+    conn.close()
 
 
 def write(data):
@@ -28,15 +28,18 @@ def write(data):
     conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
 
-    cursor.executemany('INSERT INTO trueFalse VALUES (?, ?, ?, ?, ?, ?)', data_tuple)
+    print(data)
+    print(data_tuple)
+    cursor.executemany('INSERT INTO stats VALUES (?, ?, ?, ?, ?, ?)', [data_tuple])
     conn.commit()
+    conn.close()
 
 
 def read():
     conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM trueFalse")
+    cursor.execute("SELECT * FROM stats")
     data = cursor.fetchall()
 
     def convert(data_tuple):
@@ -49,4 +52,5 @@ def read():
             "multiplechoice": data_tuple[5] == 1
         }
 
+    conn.close()
     return map(convert, data)
