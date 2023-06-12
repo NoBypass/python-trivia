@@ -1,7 +1,7 @@
 from lib.colored import *
 
 
-def multipleChoice(question, correctAnswer, answers):
+def multiple_choice(question, correctAnswer, answers):
     mistakes = 0
     answer = input('\n' + question + ' Your options are: ' + answers + ' ▶ ')
     while answer != 'skip':

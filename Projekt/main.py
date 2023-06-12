@@ -14,11 +14,10 @@ from lib.format import *
 from random import shuffle
 import os
 from urllib.request import urlopen
-import json
 import math
 import lib.database as db
 
-db.create()
+db.create_if_not_exists()
 
 # Check if all dependencies are installed
 try:
@@ -45,6 +44,7 @@ print(colored(
 
 # Welcome
 name = input(colored('What do you want to be called? ▶ ', 'blue'))
+
 while True:
     menu(50, ['full', 'Game mode Menu:', 'full', '(1) Play true / false', '(2) Play Multiple Choice', 'full'])
     game_mode = validate('Choose a game mode', ['1', '2'])
@@ -100,11 +100,12 @@ while True:
 
     # game loop:
     while game_iterations < limit:
-        data = newQuestion(topic, difficulty, game_mode)
+        data = new_question(topic, difficulty, game_mode)
 
         question = format_string(data['results'][0]['question'])
         answer = data['results'][0]['correct_answer']
 
+        # there is slightly different logic depending on the game mode
         if game_mode == '&type=multiple':
 
             possible_answers = [
@@ -128,7 +129,7 @@ while True:
             elif chosen_answer_index == 3:
                 answer = 'd'
 
-            questionStats = (multipleChoice(format_string(question), answer, format_string(options)))
+            questionStats = (multiple_choice(format_string(question), answer, format_string(options)))
             correct += questionStats[2]
             incorrect += questionStats[1]
             if incorrect == 0:
@@ -138,7 +139,7 @@ while True:
                 break
 
         elif game_mode == '&type=boolean':
-            data = newQuestion(topic, difficulty, game_mode)
+            data = new_question(topic, difficulty, game_mode)
 
             question = format_string(data['results'][0]['question'])
             answer = data['results'][0]['correct_answer']
@@ -170,7 +171,6 @@ while True:
     else:
         newScore = score
 
-    print("adsf: " + game_mode)
     stat_object = {
         "user": name,
         "correct": correct,
@@ -182,6 +182,7 @@ while True:
 
     db.write(stat_object)
 
+    # User feedback
     first_try_text = ' '
     correctOnes = str(correct)
     correctPercentage = 100 / (incorrect + correct) * correct

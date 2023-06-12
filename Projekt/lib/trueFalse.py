@@ -1,6 +1,7 @@
 from lib.colored import *
 
 
+# ask a True / False question
 def true_false(question, correct_answer):
     answer = input('\n' + question + ' \nPlease Answer with "True" or "False" (aliases are: 1 & 2, t & f) ▶ ')
     answerList = [
