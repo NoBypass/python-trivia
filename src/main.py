@@ -133,7 +133,7 @@ while True:
             correct += question_stats[2]
             incorrect += question_stats[1]
             if incorrect == 0:
-                first_try += 1
+                first_try += 1 # type: ignore
 
             if question_stats[3]:
                 break
