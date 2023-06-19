@@ -52,3 +52,45 @@ The script provided outputs are:
 4. **Score Calculation:** The script calculates the user's score based on their performance, taking into account factors such as correct answers, incorrect answers, and difficulty level.
 5. **Progress Bar:** The script displays a visual representation of the user's progress through a progress bar.
 6. **Game Results:** After completing the game, the script presents the user with their final score, performance statistics, and an option to play again or quit the game.
+
+## 5.1 Usecases
+### (T1) |15 questions get asked of true-false is selected on easy mode
+**Prerequisites:**
+- The script is started
+- The dependency error handling did not trigger
+- A name was given
+
+**Test:**
+1. In the gamemode menu, select (1)
+2. In the difficulty menu, select (1)
+3. Choose any number (0..24)
+4. Type `skip` on every question or answer it
+
+**Expected results:**
+One was able to skip or answer the questions exactly 15 times. The program did not end early and after answering for the 15th time, the podium displayed.
+
+### (T2) The multiple choice questions are different in every category/fit the category
+**Prerequisites:**
+- The script is started
+- The dependency error handling did not trigger
+- A name was given
+
+**Test:**
+1. In the gamemode menu, select (2)
+2. In the difficulty menu, select any mode (1..3)
+3. Choose any number (1..24) except 1
+4. Play quiz and note the questions
+5. Choose (1) in the play again menu
+6. In the gamemode menu, select (2)
+7. In the difficulty menu, select any mode (1..3)
+8. Choose any number (1..24) except 1. Make sure not to select the same as last time
+9. Note questions
+
+**Expected results:**
+The questions fit the category and are not about any other topic than what the category is titled. Also a question from the first category should never appear in the second category.
+
+## 5.2 Test results
+| Test ID | Successful |
+| ------- | ---------- |
+| T1 | yes |
+| T2 | no |
