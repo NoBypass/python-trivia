@@ -70,15 +70,18 @@ The script provided outputs are:
 
 ### (T1) |15 questions get asked of true-false is selected on easy mode
 
-
 ### UC1
+
 This test case is used to verify the functionality of the program when 15 true-false questions are asked in easy mode. It ensures that the program runs without errors and that the questions can be skipped or answered correctly. The expected result is that the program does not terminate prematurely and after answering or skipping the 15th question, the podium is displayed.
 
-### UC2 
+### UC2
+
 This test case is used to verify the diversity of multiple-choice questions in different categories or modes. It checks whether the questions in each category fit the designated category and are not related to any other topic. The test involves playing the quiz in two different sessions, noting the questions in each session, and ensuring that no question from the first category appears in the second category. The expected result is that the questions align with their respective categories and do not overlap between sessions.
 
-## 5.2 Test results
+## 5.2 Tests
+
 ### (T1 for UC1) 15 questions get asked of true-false is selected on easy mode
+
 **Prerequisites:**
 
 - The script is started
@@ -95,9 +98,8 @@ This test case is used to verify the diversity of multiple-choice questions in d
 **Expected results:**
 One was able to skip or answer the questions exactly 15 times. The program did not end early and after answering for the 15th time, the podium displayed.
 
-### (T2) The multiple choice questions are different in every category/fit the category
-
 ### (T2 for UC2) The multiple choice questions are different in every category/fit the category
+
 **Prerequisites:**
 
 - The script is started
