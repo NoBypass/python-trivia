@@ -166,10 +166,9 @@ while True:
         score = (first_try * 5 - incorrect + correct) * multiplier
     else:
         score = (correct - incorrect) * multiplier
+
     if score < 0:
-        new_score = 0
-    else:
-        new_score = score
+        score = 0
 
     stat_object = {
         "user": name,
@@ -199,9 +198,9 @@ while True:
         incorrect_s = 's'
 
     try:
-        menu(50, [
+        menu(70, [
             'full',
-            [('Your score is: ' + str(new_score) + '/' + str(max_score)), get_color(100 / max_score * new_score)],
+            [('Your score is: ' + str(score) + '/' + str(max_score)), get_color(100 / max_score * score)],
             [progressBar(100 / math.ceil(max_score) * int(score), 20), get_color(100 / max_score * score)],
             [('You made ' + str(incorrect) + ' mistake' + incorrect_s), get_color(correctPercentage)],
             first_try_text,
