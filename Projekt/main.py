@@ -17,8 +17,17 @@ from urllib.request import urlopen
 import math
 import lib.database as db
 
-db.create_if_not_exists()
+"""
+    Authors: Niklas Breitenstein & Iwen Aeschlimann
+    Contact: niklas.breitenstein@stud.gibb.ch & iwen.aeschlimann@stud.gibb.ch
+    Created at: 19. of June 2023
 
+    About:
+        Python-Trivia is little triva game written in python. It uses a free API in order to get its questions.
+        Have fun playing with it 🥳!
+"""
+
+db.create_if_not_exists()
 # Check if all dependencies are installed
 try:
     test = [

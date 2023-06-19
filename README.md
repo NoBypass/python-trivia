@@ -39,8 +39,9 @@ The script accepts the following inputs from the user:
 
 1. **User Name:** The user is prompted to enter their preferred name to be used throughout the game.
 2. **Game Mode:** The user selects the game mode (either true/false or multiple-choice) they want to play.
-3. **Difficulty** Level: The user chooses the difficulty level (easy, medium, or hard) for the quiz questions.
+3. **Difficulty:** Level: The user chooses the difficulty level (easy, medium, or hard) for the quiz questions.
 4. **Topic Selection:** The user selects a specific topic or chooses to play with questions from any category.
+5. **Scores:** Previous scores get read via SQLite from the database.db file.
 
 ## 1.5 Outputs
 The script provided outputs are:
@@ -52,6 +53,11 @@ The script provided outputs are:
 4. **Score Calculation:** The script calculates the user's score based on their performance, taking into account factors such as correct answers, incorrect answers, and difficulty level.
 5. **Progress Bar:** The script displays a visual representation of the user's progress through a progress bar.
 6. **Game Results:** After completing the game, the script presents the user with their final score, performance statistics, and an option to play again or quit the game.
+7. **Scores:** New Scores get saved via SQLite in to the database.db file. 
+
+## 2.0 Flowchart
+
+![Flowchart of the script](flowchart.drawio.png)
 
 ## 5.1 Usecases
 ### (T1) |15 questions get asked of true-false is selected on easy mode
